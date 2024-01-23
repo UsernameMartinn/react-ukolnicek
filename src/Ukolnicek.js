@@ -14,7 +14,7 @@ export default function Ukolnicek() {
         <>
         <NovyUkol pridejUkol={pridejUkol} />
         <br />
-        { seznamUkolu.map((ukol) => <PolozkaUkolu ukol={ukol}></PolozkaUkolu>) }
+        { seznamUkolu.map((ukol, poradi) => <PolozkaUkolu ukol={ukol} poradi={poradi}></PolozkaUkolu>) }
 
         <button onClick={() => pridejUkol("novy ukol")}>Pridej nahodny ukol</button>
         </>
