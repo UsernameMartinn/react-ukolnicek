@@ -12,7 +12,7 @@ export default function NovyUkol( {pridejUkol} ) {
         onChange={(udalost) => nastavUkol(udalost.target.value) }>
 
         </input>
-        <button onClick={() => pridejUkol(', ' + ukol)}>Přidej úkol</button>
+        <button onClick={() => pridejUkol(ukol)}>Přidej úkol</button>
         </>
     )
 }

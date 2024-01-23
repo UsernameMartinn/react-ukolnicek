@@ -1,5 +1,6 @@
 import NovyUkol from "./NovyUkol";
 import { useState } from "react";
+import PolozkaUkolu from "./PolozkaUkolu";
 
 export default function Ukolnicek() {
 
@@ -13,7 +14,7 @@ export default function Ukolnicek() {
         <>
         <NovyUkol pridejUkol={pridejUkol} />
         <br />
-        {seznamUkolu}
+        { seznamUkolu.map((ukol) => <PolozkaUkolu ukol={ukol}></PolozkaUkolu>) }
 
         <button onClick={() => pridejUkol("novy ukol")}>Pridej nahodny ukol</button>
         </>
