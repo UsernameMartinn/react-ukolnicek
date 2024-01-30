@@ -13,8 +13,6 @@ export default function NovyUkol( {pridejUkol} ) {
 
         </input>
         <button onClick={() => pridejUkol(ukol)}>Přidej úkol</button>
-
-        <div>Počet úkolů:</div>
         </>
     )
 }

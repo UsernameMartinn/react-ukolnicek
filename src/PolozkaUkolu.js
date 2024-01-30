@@ -5,8 +5,9 @@ export default function PolozkaUkolu( {ukol, poradi, fceSmazat} ) {
 
     return (
         <>
-        <span style={{color: "red", fontWeight: "bold", fontSize: "20px"}}>{poradi}. </span>
-        <span style={{color: "red", fontWeight: "bold", fontSize: "20px"}}>{ukol}</span>
+        <span>{poradi}. </span>
+        {!ukol.spleno && <span className="text-ukolu">{ukol.text}</span>}
+        {ukol.spleno && <span className="splneny-ukol">{ukol.text}</span>}
         <button onClick={() => fceSmazat(poradi)}>Smazat</button>
         <button>Hotovo</button>
         <br/>
