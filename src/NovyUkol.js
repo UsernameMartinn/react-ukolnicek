@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+
 export default function NovyUkol( {pridejUkol} ) {
 
     const [ukol, nastavUkol] = useState('');

@@ -2,6 +2,7 @@ import NovyUkol from "./NovyUkol";
 import { useState, useEffect } from "react";
 import PolozkaUkolu from "./PolozkaUkolu";
 
+
 export default function Ukolnicek(poradi) {
 
     //const [seznamUkolu, nastavSeznamUkolu] = useState(['Novy ukol', 'dalsi ukol']);
@@ -25,7 +26,11 @@ export default function Ukolnicek(poradi) {
 
     function splnUkol(poradiUkolu) {
         let upravenySeznamUkolu = [...seznamUkolu];
+        if(upravenySeznamUkolu[poradiUkolu].splneno == true) {
+        upravenySeznamUkolu[poradiUkolu].splneno = false;
+    } else {
         upravenySeznamUkolu[poradiUkolu].splneno = true;
+    }
         nastavSeznamUkolu(upravenySeznamUkolu);
     }
 
