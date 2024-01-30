@@ -8,13 +8,13 @@ export default function Ukolnicek(poradi) {
     //const [seznamUkolu, nastavSeznamUkolu] = useState(['Novy ukol', 'dalsi ukol']);
 
     const [seznamUkolu, nastavSeznamUkolu] = useState([
-        {text: 'Novy ukol', splneno: false},
-        {text: 'dalsi ukol', splneno: false},
-        {text: 'splneny ukol', splneno: true}
+        { text: 'Novy ukol', splneno: false },
+        { text: 'dalsi ukol', splneno: false },
+        { text: 'splneny ukol', splneno: true }
     ])
 
     function pridejUkol(novyUkol) {
-        let novyUkolObj = {text: novyUkol, splneno: false};
+        let novyUkolObj = { text: novyUkol, splneno: false };
         nastavSeznamUkolu([...seznamUkolu, novyUkolObj])
     }
 
@@ -24,13 +24,21 @@ export default function Ukolnicek(poradi) {
         nastavSeznamUkolu(upravenySeznamUkolu)
     }
 
+    /*
+    function splnUkol(poradiUkolu) {
+         let upravenySeznamUkolu = [...seznamUkolu];
+         if (upravenySeznamUkolu[poradiUkolu].splneno == true) {
+             upravenySeznamUkolu[poradiUkolu].splneno = false;
+         } else {
+             upravenySeznamUkolu[poradiUkolu].splneno = true;
+         }
+         nastavSeznamUkolu(upravenySeznamUkolu);
+     }
+     */
+
     function splnUkol(poradiUkolu) {
         let upravenySeznamUkolu = [...seznamUkolu];
-        if(upravenySeznamUkolu[poradiUkolu].splneno == true) {
-        upravenySeznamUkolu[poradiUkolu].splneno = false;
-    } else {
-        upravenySeznamUkolu[poradiUkolu].splneno = true;
-    }
+        upravenySeznamUkolu[poradiUkolu].splneno = !upravenySeznamUkolu[poradiUkolu].splneno
         nastavSeznamUkolu(upravenySeznamUkolu);
     }
 
@@ -38,13 +46,13 @@ export default function Ukolnicek(poradi) {
 
     return (
         <>
-        <NovyUkol pridejUkol={pridejUkol} />
-        <br />
-        { seznamUkolu.map((ukol, poradi) => <PolozkaUkolu ukol={ukol} poradi={poradi} fceSmazat={smazatUkol} fceSpln={splnUkol}></PolozkaUkolu>) }
+            <NovyUkol pridejUkol={pridejUkol} />
+            <br />
+            {seznamUkolu.map((ukol, poradi) => <PolozkaUkolu ukol={ukol} poradi={poradi} fceSmazat={smazatUkol} fceSpln={splnUkol}></PolozkaUkolu>)}
 
-        <div>Počet úkolů: {seznamUkolu.length}</div>
+            <div>Počet úkolů: {seznamUkolu.length}</div>
 
-        <button onClick={() => pridejUkol("novy ukol")}>Pridej nahodny ukol</button>
+            <button onClick={() => pridejUkol("novy ukol")}>Pridej nahodny ukol</button>
         </>
     )
 }
