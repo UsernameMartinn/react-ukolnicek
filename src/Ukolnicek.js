@@ -24,6 +24,29 @@ export default function Ukolnicek(poradi) {
         nastavSeznamUkolu(upravenySeznamUkolu)
     }
 
+    function splneno() {
+        /*let pocetSplnenych = 0
+        for (let ukol of seznamUkolu) {
+            if (ukol.splneno) {
+                pocetSplnenych ++
+            }
+        }
+        */
+       let pocetSplnenych = seznamUkolu.filter(ukol => ukol.splneno).length
+
+        
+        return pocetSplnenych
+        /*for(let i = 0; i <= seznamUkolu.length; i++) {
+            if (seznamUkolu[i].splneno == true) {
+                pocetSplnenych = pocetSplnenych + 1
+            }
+            
+        }
+        return pocetSplnenych
+        */
+    }
+
+
     /*
     function splnUkol(poradiUkolu) {
          let upravenySeznamUkolu = [...seznamUkolu];
@@ -51,6 +74,8 @@ export default function Ukolnicek(poradi) {
             {seznamUkolu.map((ukol, poradi) => <PolozkaUkolu ukol={ukol} poradi={poradi} fceSmazat={smazatUkol} fceSpln={splnUkol}></PolozkaUkolu>)}
 
             <div>Počet úkolů: {seznamUkolu.length}</div>
+            <div>Počet splněných úkolů: {splneno()}</div>
+            <div>Počet nesplněných úkolů: {seznamUkolu.filter(ukol => !ukol.splneno).length}</div>
 
             <button onClick={() => pridejUkol("novy ukol")}>Pridej nahodny ukol</button>
         </>
