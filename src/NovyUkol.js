@@ -1,5 +1,6 @@
 import { useState } from 'react';
-
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 export default function NovyUkol( {pridejUkol} ) {
 
@@ -8,12 +9,12 @@ export default function NovyUkol( {pridejUkol} ) {
 
     return (
         <>
-        <input 
-        value={ukol} 
-        onChange={(udalost) => nastavUkol(udalost.target.value) }>
+        <TextField id="outlined-basic" label="Outlined" variant="outlined" value={ukol} 
+        onChange={(udalost) => nastavUkol(udalost.target.value) }/>
 
-        </input>
-        <button onClick={() => pridejUkol(ukol)}>Přidej úkol</button>
+        
+        {/*<button onClick={() => pridejUkol(ukol)}>Přidej úkol</button>*/}
+        <Button variant="contained" onClick={() => pridejUkol(ukol)}>Přidej úkol</Button>
         </>
     )
 }
