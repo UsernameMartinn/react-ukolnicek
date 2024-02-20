@@ -9,7 +9,7 @@ export default function PolozkaUkolu( {ukol, poradi, fceSmazat, fceSpln} ) {
         <span>{poradi}. </span>
         {!ukol.splneno && <span className="text-ukolu">{ukol.text}</span>}
         {ukol.splneno && <span className="splneny-ukol">{ukol.text}</span>}
-        <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => fceSmazat(poradi)}>Smazat</Button>
+        <Button variant="outlined" color="error" startIcon={<DeleteIcon />} onClick={() => fceSmazat(poradi)}>Smazat</Button>
         <Button variant="contained" color="success" onClick={() => fceSpln(poradi)}>Hotovo</Button>
         <br/>
         </>

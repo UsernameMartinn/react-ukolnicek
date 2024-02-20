@@ -1,11 +1,19 @@
 import NovyUkol from "./NovyUkol";
 import { useState, useEffect } from "react";
 import PolozkaUkolu from "./PolozkaUkolu";
+import Button from '@mui/material/Button';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { Typography } from "@mui/material";
 
 
 export default function Ukolnicek(poradi) {
 
     //const [seznamUkolu, nastavSeznamUkolu] = useState(['Novy ukol', 'dalsi ukol']);
+
+    const [barvaTlacitka, nastavBarvuTlacitka] = useState("blue");
 
     const [seznamUkolu, nastavSeznamUkolu] = useState([
         { text: 'Novy ukol', splneno: false },
@@ -13,7 +21,16 @@ export default function Ukolnicek(poradi) {
         { text: 'splneny ukol', splneno: true }
     ])
 
+    function nahodnaSlozkaBarvy() {
+        return Math.random() * 255;
+    }
+
     function pridejUkol(novyUkol) {
+        //let barva = "rgb(" + nahodnaSlozkaBarvy() + ", " + nahodnaSlozkaBarvy() + ", " + nahodnaSlozkaBarvy() + ")"
+        let barva = `rgb(${nahodnaSlozkaBarvy()}, ${nahodnaSlozkaBarvy()}, ${nahodnaSlozkaBarvy()})`
+
+        nastavBarvuTlacitka(barva)
+
         let novyUkolObj = { text: novyUkol, splneno: false };
         nastavSeznamUkolu([...seznamUkolu, novyUkolObj])
     }
@@ -71,13 +88,13 @@ export default function Ukolnicek(poradi) {
         <>
             <NovyUkol pridejUkol={pridejUkol} />
             <br />
-            {seznamUkolu.map((ukol, poradi) => <PolozkaUkolu ukol={ukol} poradi={poradi} fceSmazat={smazatUkol} fceSpln={splnUkol}></PolozkaUkolu>)}
+            <Typography variant="body1">{seznamUkolu.map((ukol, poradi) => <PolozkaUkolu ukol={ukol} poradi={poradi} fceSmazat={smazatUkol} fceSpln={splnUkol}></PolozkaUkolu>)}</Typography>
 
-            <div>Počet úkolů: {seznamUkolu.length}</div>
-            <div>Počet splněných úkolů: {splneno()}</div>
-            <div>Počet nesplněných úkolů: {seznamUkolu.filter(ukol => !ukol.splneno).length}</div>
+            <Typography variant="body1">Počet úkolů: {seznamUkolu.length}</Typography>
+            <Typography variant="body1">Počet splněných úkolů: {splneno()}</Typography>
+            <Typography variant="body1">Počet nesplněných úkolů: {seznamUkolu.filter(ukol => !ukol.splneno).length}</Typography>
 
-            <button onClick={() => pridejUkol("novy ukol")}>Pridej nahodny ukol</button>
+            <Button variant="contained" style={{backgroundColor : barvaTlacitka}} onClick={() => pridejUkol("novy ukol")}>Přidej náhodný úkol</Button>
         </>
     )
 }
